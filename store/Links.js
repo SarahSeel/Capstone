@@ -1,5 +1,5 @@
 export default [
-    { title: "Destinations", text: "Destinations" },
-    { title: "Events", text: "Local Events" },
-    { title: "Plan trip", text: "Lets Plan a Trip" }
+  { title: "Destinations", text: "Destinations" },
+  { title: "Events", text: "Local Events" },
+  { title: "Plantrip", text: "Lets Plan a Trip" }
 ];
