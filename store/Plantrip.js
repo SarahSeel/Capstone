@@ -1,4 +1,4 @@
 export default {
-  header: "Lets Plan a Trip",
-  view: "Planning Trip"
+  header: "Planning Trip",
+  view: "Lets Plan a Trip"
 };
