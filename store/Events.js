@@ -1,4 +1,4 @@
 export default {
-    header: "Events Page",
-    view: "Events"
+  header: "Events Page",
+  view: "Events"
 };
