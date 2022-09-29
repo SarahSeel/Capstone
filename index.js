@@ -2,10 +2,8 @@ import { Header, Nav, Main, Footer } from "./components";
 import * as store from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
-import dotenv from "dotenv";
-import axios from "axios";
 
-dotenv.config();
+import axios from "axios";
 
 const router = new Navigo("/");
 
@@ -60,7 +58,6 @@ router.hooks({
             done();
           })
           .catch(err => console.log(err));
-        done();
     }
   }
 });
