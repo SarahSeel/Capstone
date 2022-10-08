@@ -1,8 +1,10 @@
 export default [
-  { title: "Destinations", text: "Destinations" },
-  { title: "Events", text: "Local Events" },
-  { title: "Plantrip", text: "Lets Plan a Trip" },
+  { title: "Home", text: "Home" },
+  { title: "Account", text: "Account" },
+  { title: "Weather", text: "Weather" },
+  { title: "Plantrip", text: "Trip" },
+  { title: "Map", text: "Map" },
+  { title: "Events", text: "Events" },
   { title: "About", text: "About Us" },
-  { title: "Contact", text: "Contact Us" },
-  { title: "Home", text: "Home" }
+  { title: "Contact", text: "Contact Us" }
 ];
