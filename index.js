@@ -46,15 +46,15 @@ router.hooks({
             const kelvinToFahrenheit = kelvinTemp =>
               Math.round((kelvinTemp - 273.15) * (9 / 5) + 32);
 
-            store.Home.weather = {};
-            store.Home.weather.city = response.data.name;
-            store.Home.weather.temp = kelvinToFahrenheit(
+            store.Weather.weather = {};
+            store.Weather.weather.city = response.data.name;
+            store.Weather.weather.temp = kelvinToFahrenheit(
               response.data.main.temp
             );
-            store.Home.weather.feelsLike = kelvinToFahrenheit(
+            store.Weather.weather.feelsLike = kelvinToFahrenheit(
               response.data.main.feels_like
             );
-            store.Home.weather.description = response.data.weather[0].main;
+            store.Weather.weather.description = response.data.weather[0].main;
 
             console.log(response.data);
             done();

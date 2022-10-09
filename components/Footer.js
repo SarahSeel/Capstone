@@ -1,9 +1,9 @@
 import html from "html-literal";
 
 export default () => html`
-  <footer id="footer">
-    <center>
+  <div>
+    <footer>
       &copy; 2022 by Sarah Seel
-    </center>
-  </footer>
+    </footer>
+  </div>
 `;
