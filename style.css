@@ -34,9 +34,8 @@ img {
 }
 
 .navigation {
-position: relative;
-display: flex;
-position: absolute;
+  display:flex;
+  position: absolute;
 width: 10rem;
 }
 
@@ -55,16 +54,21 @@ width: 10rem;
   border-bottom: 1px solid #3d405b;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   display: flex;
+
 }
 
 .navigation .sidebar ul li a{
   color:#e07a5f;
-  width: 500px;
+  width: 600px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: medium;
   max-width: 5em;
   padding: 1px 2px 1px 2px;
+}
+
+.nav-links > li > a{
+  border: 1px solid black;
 }
 
 .navigation .sidebar ul li:hover {
@@ -76,8 +80,8 @@ width: 10rem;
 }
 
 
-@media (max-width: 549px){
-  .hidden--mobile {
+@media (min-width: 549px){
+  .fa-solid.fa-bars {
     display: none !important;
   }
 
