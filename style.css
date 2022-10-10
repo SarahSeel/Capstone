@@ -37,17 +37,17 @@ img {
   display:flex;
   position: absolute;
 width: 10rem;
+justify-content: space-between;
 }
 
 .navigation .sidebar {
-  width: 180px;
+  width: 150px;
   height: auto;
   background: #f2cc8f;
   padding: 30px 10px;
   text-align: center;
-  margin-bottom: 15px;
-  margin-right: 10px;
 }
+
 
 .navigation .sidebar ul li{
   padding: 30px;
@@ -59,16 +59,14 @@ width: 10rem;
 
 .navigation .sidebar ul li a{
   color:#e07a5f;
-  width: 600px;
-  display: flex;
-  justify-content: space-evenly;
   font-size: medium;
   max-width: 5em;
   padding: 1px 2px 1px 2px;
+  transition: all 0.3s ease 0s;
 }
 
 .nav-links > li > a{
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .navigation .sidebar ul li:hover {
@@ -80,8 +78,9 @@ width: 10rem;
 }
 
 
+
 @media (min-width: 549px){
-  .fa-solid.fa-bars {
-    display: none !important;
+  .fa-bars {
+    display: none;
   }
 
