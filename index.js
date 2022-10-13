@@ -60,29 +60,7 @@ router.hooks({
           })
           .catch(err => console.log(err));
         break;
-      // case "Map":
-      //   const options = {
-      //     method: "GET",
-      //     url: "https://waze.p.rapidapi.com/driving-directions",
-      //     params: {
-      //       source_coordinates: "32.0852999,34.78176759999999",
-      //       destination_coordinates: "32.7940463,34.989571"
-      //     },
-      //     headers: {
-      //       "X-RapidAPI-Key":
-      //         "6286e1c6cdmsh3a3b55c77e0b8b7p182286jsn4c1edbefb28f",
-      //       "X-RapidAPI-Host": "waze.p.rapidapi.com"
-      //     }
-      //   };
-
-      //   axios
-      //     .request(options)
-      //     .then(function(response) {
-      //       console.log(response.data);
-      //     })
-      //     .catch(function(error) {
-      //       console.error(error);
-      //     });
+      case "Map":
       default:
         done();
     }
