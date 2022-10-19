@@ -16,16 +16,55 @@ function render(state = store.Home) {
   ${Main(state)}
   ${Footer()}
   `;
-
   afterRender(state);
-
   router.updatePageLinks();
 }
-function afterRender() {
+function afterRender(state) {
   // add menu toggle to bars icon in nav bar
-  document.querySelector(".fa-bars").addEventListener("click", () => {
-    document.querySelector("nav > ul").classList.toggle("hidden--mobile");
+  document.querySelector(".fa-solid").addEventListener("click", () => {
+    document
+      .querySelector("navigation > ul")
+      .classList.toggle("hidden--mobile");
   });
+  if (state.view === "Map") {
+    const formEntry = document.querySelector("form");
+    const directionList = document.querySelector(".map");
+    formEntry.addEventListener("submit", async event => {
+      event.preventDefault();
+      // directionList.classList.toggle("directions");
+      const inputList = event.target.elements;
+      console.log("Input Element List", inputList);
+
+      const from = {
+        street: inputList.fromStreet.value,
+        city: inputList.fromCity.value,
+        state: inputList.fromStreet.value
+      };
+      const to = {
+        street: inputList.toStreet.value,
+        city: inputList.toCity.value,
+        state: inputList.toStreet.value
+      };
+
+      await axios
+        .get(
+          `http://www.mapquestapi.com/directions/v2/route?key=${process.env.MAP_QUEST_API}&from=${from.street},${from.city},${from.state}&to=${to.street},+${to.city},+${to.state}`
+        )
+        .then(response => {
+          console.log(response.data);
+          // console.log(response.data.route.legs[0].origNarrative);
+          // store.Direction.directions = response.data;
+          // store.Direction.directions.first =
+          //   response.data.route.legs[0].origNarrative;
+          store.Map.directions.maneuvers =
+            response.data.route.legs[0].maneuvers;
+          router.navigate("/Map");
+        })
+        .catch(error => {
+          console.log("Invalid Address", error);
+        });
+    });
+  }
 }
 
 router.hooks({
@@ -60,13 +99,38 @@ router.hooks({
           })
           .catch(err => console.log(err));
         break;
-      case "Map":
+      // case "Map":
+      //   axios
+      //     .get(
+      //       `http://www.mapquestapi.com/directions/v2/route?key=${process.env.MAP_QUEST_API}&from=1%20Government%20Dr,St.%20Louis,Mo&to=700+Clark+Ave,+St.%20Louis,+MO`
+      //     )
+      //     .then(response => {
+      //       console.log(response.data.route.legs[0].origNarrative);
+      //       store.Map.directions = response.data;
+      //       store.Map.directions.first =
+      //         response.data.route.legs[0].origNarrative;
+      //       store.Map.directions.maneuvers =
+      //         response.data.route.legs[0].maneuvers;
+      //       done();
+      //     })
+      //     .catch(error => {
+      //       console.log("It puked", error);
+      //       done();
+      //     });
+      // break;
       default:
         done();
     }
+  },
+  already: params => {
+    const view =
+      params && params.data && params.data.view
+        ? capitalize(params.data.view)
+        : "Home";
+
+    render(store[view]);
   }
 });
-
 router
   .on({
     "/": () => render(),
