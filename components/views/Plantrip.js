@@ -1,8 +1,14 @@
 import html from "html-literal";
 
 export default state => html`
-  <img
-    class="img"
-    src="https://images.pexels.com/photos/2754200/pexels-photo-2754200.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
-  />
+  <h2>Route Map</h2>
+  <div class="routeMap">
+    ${outputMap(state)}
+  </div>
 `;
+
+function outputMap(state) {
+  if (typeof state.from !== "undefined" && typeof state.to !== "undefined") {
+    return `<img src="https://www.mapquestapi.com/staticmap/v5/map?key=${process.env.MAPQUEST_API}&start=${state.from.street},${state.from.city},${state.from.state}&end=${state.to.street},+${state.to.city},+${state.to.state}&size=600,400@2x" alt="">`;
+  }
+}
