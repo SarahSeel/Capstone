@@ -33,12 +33,12 @@ img {
   padding: 20px;
   margin: 20px;
 }
-
- @media (min-width: 550px) {
-  nav > ul {
-    display: flex;
+@media (min-width: 550px) {
+  nav > .Navbar {
+    /* display: flex;
     justify-content: space-evenly;
-    padding: 0 0;
+    padding: 0 0; */
+    display: none;
   }
 
 
@@ -92,6 +92,7 @@ padding: 20px 25px;
 }
 
 
+
 #directions {
   display: flex;
 align-items: center;
@@ -106,3 +107,12 @@ margin: 20px;
   align-items: center;
   padding: 20px;
 }
+
+
+@media (max-width: 549px) {
+  .hidden--mobile {
+    /* display: flex;
+    justify-content: space-evenly;
+    padding: 0 0; */
+    display: none;
+  }
