@@ -16,16 +16,106 @@ function render(state = store.Home) {
   ${Main(state)}
   ${Footer()}
   `;
-
   afterRender(state);
-
   router.updatePageLinks();
 }
-function afterRender() {
+
+// Navbar Functionality
+
+function afterRender(state) {
   // add menu toggle to bars icon in nav bar
-  document.querySelector(".fa-bars").addEventListener("click", () => {
+  // document.querySelector(".fa-solid").addEventListener("click", () => {
+  //   document.querySelector("nav").classList.toggle("hidden--mobile");
+  // });
+
+  document.querySelector(" .fa-solid").addEventListener("click", () => {
     document.querySelector("nav > ul").classList.toggle("hidden--mobile");
   });
+
+  if (state.view === "Home") {
+    //Do DOM Stuff here
+    console.log("Hello");
+  }
+
+  //Map API
+
+  if (state.view === "Plantrip") {
+    const formEntry = document.querySelector("form");
+    const directionList = document.querySelector(".plantrip");
+
+    formEntry.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      console.log("matsinet-event:", event);
+
+      // directionList.classList.toggle("directions");
+      const inputList = event.target.elements;
+      console.log("Input Element List", inputList);
+
+      const from = {
+        street: inputList.fromStreet.value,
+        city: inputList.fromCity.value,
+        state: inputList.fromStreet.value
+      };
+
+      store.Plantrip.from = from;
+      store.Route.from = from;
+
+      const to = {
+        street: inputList.toStreet.value,
+        city: inputList.toCity.value,
+        state: inputList.toStreet.value
+      };
+
+      store.Plantrip.to = to;
+      store.Route.to = to;
+
+      if (event.submitter.name === "showDirections") {
+        /*
+          Please refer to the documentation:
+          https://developer.mapquest.com/documentation/directions-api/
+        */
+        axios
+          .get(
+            `http://www.mapquestapi.com/directions/v2/route?key=${process.env.MAP_QUEST_API}&from=${from.street},${from.city},${from.state}&to=${to.street},+${to.city},+${to.state}`
+          )
+          .then(response => {
+            store.Plantrip.directions = response.data;
+            store.Plantrip.directions.maneuvers =
+              response.data.route.legs[0].maneuvers;
+            router.navigate("/Plantrip");
+          })
+          .catch(error => {
+            console.log("Invalid Address", error);
+          });
+      }
+
+      if (event.submitter.name === "showRoute") {
+        router.navigate("/Route");
+      }
+    });
+  }
+  if (state.view === "Map") {
+    /*
+      Please refer to the documentation:
+      https://developer.mapquest.com/documentation/mapquest-js/v1.3/
+    */
+
+    // eslint-disable-next-line no-undef
+    L.mapquest.key = process.env.MAP_QUEST_API;
+
+    // 'map' refers to a <div> element with the ID map
+    // eslint-disable-next-line no-undef
+    const map = L.mapquest.map("map", {
+      center: [37.7749, -122.4194],
+      // eslint-disable-next-line no-undef
+      layers: L.mapquest.tileLayer("map"),
+      zoom: 12
+    });
+
+    // eslint-disable-next-line no-undef
+    map.addControl(L.mapquest.control());
+  }
 }
 
 router.hooks({
@@ -34,6 +124,8 @@ router.hooks({
       params && params.data && params.data.view
         ? capitalize(params.data.view)
         : "Home";
+
+    //Weather API
 
     switch (view) {
       case "Weather":
@@ -60,13 +152,19 @@ router.hooks({
           })
           .catch(err => console.log(err));
         break;
-      case "Map":
       default:
         done();
     }
+  },
+  already: params => {
+    const view =
+      params && params.data && params.data.view
+        ? capitalize(params.data.view)
+        : "Home";
+
+    render(store[view]);
   }
 });
-
 router
   .on({
     "/": () => render(),

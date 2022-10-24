@@ -1,15 +1,12 @@
 * {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 500;
-  font-size: large;
-  /* border: 1px solid black; */
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
-body {
+
+ body {
   background-color: #f4f1de;
   display: flex;
   flex-direction: column;
@@ -18,12 +15,37 @@ body {
   text-align: center;
 }
 
+.routeMap {
+  max-width: 1000px;
+}
+
+#map {
+  height: 600px;
+}
+
+
+
+#directions {
+  display: flex;
+align-items: center;
+font-family: 'Nunito Sans', sans-serif;
+font-size: large;
+padding: 10px 15px;
+margin: 20px;
+}
+
+.direc{
+  align-items: center;
+  padding: 20px;
+}
+
 footer {
   padding: 15px 10px 15px 10px;
   border-top: 2px solid #3d405b;
-  margin-top: 75%;
+  margin-top: 50%;
   display: flex;
   justify-content: right;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 img {
@@ -33,54 +55,66 @@ img {
   margin: 20px;
 }
 
-.navigation {
-  display:flex;
-  position: absolute;
-width: 10rem;
-justify-content: space-between;
+.Logo {
+display: inline-flex;
+font-family: 'Quicksand';
+font-size: larger;
+color:#e07a5f;
+}
+nav > i {
+  padding: 1rem;
+  font-size: 2em;
+  color: #81b29a;
 }
 
-.navigation .sidebar {
-  width: 150px;
-  height: auto;
-  background: #f2cc8f;
-  padding: 30px 10px;
-  text-align: center;
-}
-
-
-.navigation .sidebar ul li{
-  padding: 30px;
-  border-bottom: 1px solid #3d405b;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+nav > ul {
   display: flex;
-
+  align-items: center;
+  flex-direction: column;
+  padding: 0 0;
+  background-color: #f2cc8f;
+  border: #3d405b 1px solid;
 }
 
-.navigation .sidebar ul li a{
-  color:#e07a5f;
-  font-size: medium;
-  max-width: 5em;
-  padding: 1px 2px 1px 2px;
-  transition: all 0.3s ease 0s;
+nav > ul > li {
+  list-style-type: none;
+  display: flex;
+  padding: 3px 8px;
+  margin: 3px;
 }
 
-.nav-links > li > a{
-  /* border: 1px solid black; */
-}
+@media (min-width: 550px) {
+  nav > ul {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f2cc8f;
+    flex-direction: row;
+    padding: 10px 10px;
+  }
 
-.navigation .sidebar ul li:hover {
-  background-color: #e07a5f;
-}
+  .hidden--mobile a:hover{
+    background-color: #e07a5f;
+    color:#3d405b;
+    align-items: center;
+    padding: 10px 10px;
+  }
 
-.navigation .sidebar ul li:hover a {
-  color: #3d405b;
-}
-
-
-
-@media (min-width: 549px){
-  .fa-bars {
+  nav > .fa-motorcycle {
     display: none;
   }
+
+  @media (max-width: 549px){
+    .hidden--mobile {
+      display: none !important;
+      display: flex;
+    }
+
+
+
+
+
+
+
+
+
 

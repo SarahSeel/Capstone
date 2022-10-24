@@ -2,9 +2,11 @@ import html from "html-literal";
 
 export default state => html`
   <body>
-    <section id="Account">
+    <form action="https://formspree.io/f/xpzndvdk" method="POST">
+
+    <section id="accounts">
       <form id="account" method="POST" action="">
-        <h2><b>Account</b></h2>
+        <h2><b>Account Info</b></h2>
         <div>
           <input
             type="text"
@@ -47,7 +49,7 @@ export default state => html`
             name="name"
             id="name"
             placeholder="Motorcycle info"
-            required
+
           />
         </div>
         <div>
@@ -65,7 +67,7 @@ export default state => html`
             name="name"
             id="name"
             placeholder="Riding experience"
-            required
+
           />
         </div>
         <div>
@@ -74,8 +76,10 @@ export default state => html`
             name="name"
             id="name"
             placeholder="Social Media Account"
-            required
-          />
+
+          /></div>
+
+          <div><input type="submit" name="submit" value="Submit" />
         </div>
       </form>
     </section>
