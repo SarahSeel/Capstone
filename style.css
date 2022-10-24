@@ -1,8 +1,4 @@
 * {
-  /* font-family: 'Raleway', sans-serif; */
-  /* font-weight: 500; */
-  /* font-size: medium; */
-  /* border: 1px solid black; */
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -23,79 +19,8 @@
   max-width: 1000px;
 }
 
-footer {
-  padding: 15px 10px 15px 10px;
-  border-top: 2px solid #3d405b;
-  margin-top: 50%;
-  display: flex;
-  justify-content: right;
-}
-
-img {
-  width: 50%;
-  height: 50%;
-  padding: 20px;
-  margin: 20px;
-}
-
-
-
-@media (min-width: 550px) {
-  nav > .Navbar {
-    /* display: flex;
-    justify-content: space-evenly;
-    padding: 0 0; */
-    display: none;
-  }
-
-
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background-color: #f2cc8f;
-}
-
-.fa-solid {
-  display: flex;
-  align-items: center;
-  background-color: #f2cc8f;
-  justify-content: space-evenly;
-}
-
-
-.Logo {
-  font-family: 'Nunito Sans', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: large;
-}
-
-
-.hidden--mobile {
-display: flex;
-justify-content: space-between;
-list-style: none;
-margin: 10px;
-padding: 20px 25px;
-}
-
-.hidden--mobile a:hover{
-  background-color: #e07a5f;
-  color:#3d405b;
-  padding: 10px 15px;
-}
-
-
-.hidden--mobile .fa-solid {
-  width: 150px;
-  font-size: medium;
-}
-
-.Navbar .hidden--mobile .link-text {
-  display: flex;
-  justify-content: space-around;
+#map {
+  height: 600px;
 }
 
 
@@ -107,7 +32,6 @@ font-family: 'Nunito Sans', sans-serif;
 font-size: large;
 padding: 10px 15px;
 margin: 20px;
-
 }
 
 .direc{
@@ -115,11 +39,82 @@ margin: 20px;
   padding: 20px;
 }
 
+footer {
+  padding: 15px 10px 15px 10px;
+  border-top: 2px solid #3d405b;
+  margin-top: 50%;
+  display: flex;
+  justify-content: right;
+  font-family: 'Nunito Sans', sans-serif;
+}
 
-@media (max-width: 549px) {
-  .hidden--mobile {
-    /* display: flex;
+img {
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  margin: 20px;
+}
+
+.Logo {
+display: inline-flex;
+font-family: 'Quicksand';
+font-size: larger;
+color:#e07a5f;
+}
+nav > i {
+  padding: 1rem;
+  font-size: 2em;
+  color: #81b29a;
+}
+
+nav > ul {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 0;
+  background-color: #f2cc8f;
+  border: #3d405b 1px solid;
+}
+
+nav > ul > li {
+  list-style-type: none;
+  display: flex;
+  padding: 3px 8px;
+  margin: 3px;
+}
+
+@media (min-width: 550px) {
+  nav > ul {
+    display: flex;
     justify-content: space-evenly;
-    padding: 0 0; */
+    background-color: #f2cc8f;
+    flex-direction: row;
+    padding: 10px 10px;
+  }
+
+  .hidden--mobile a:hover{
+    background-color: #e07a5f;
+    color:#3d405b;
+    align-items: center;
+    padding: 10px 10px;
+  }
+
+  nav > .fa-motorcycle {
     display: none;
   }
+
+  @media (max-width: 549px){
+    .hidden--mobile {
+      display: none !important;
+      display: flex;
+    }
+
+
+
+
+
+
+
+
+
+
