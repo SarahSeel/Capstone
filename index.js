@@ -23,12 +23,7 @@ function render(state = store.Home) {
 // Navbar Functionality
 
 function afterRender(state) {
-  // add menu toggle to bars icon in nav bar
-  // document.querySelector(".fa-solid").addEventListener("click", () => {
-  //   document.querySelector("nav").classList.toggle("hidden--mobile");
-  // });
-
-  document.querySelector(" .fa-solid").addEventListener("click", () => {
+  document.querySelector(".fa-bars").addEventListener("click", () => {
     document.querySelector("nav > ul").classList.toggle("hidden--mobile");
   });
 

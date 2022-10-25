@@ -11,8 +11,8 @@ export default links => html`
 
       <nav>
       <div class="Logo">Moto Journey</div>
-    </div>
-    <i class="fa-solid fa-motorcycle"></i>
+    <!-- <i class="fa-solid fa-motorcycle"></i> -->
+    <i class="fas fa-bars"></i>
     <ul class="hidden--mobile nav-links">
         ${links
           .map(
