@@ -16,17 +16,18 @@ function render(state = store.Home) {
   ${Main(state)}
   ${Footer()}
   `;
-  afterRender(state);
   router.updatePageLinks();
+  afterRender(state);
 }
 
 // Navbar Functionality
 
 function afterRender(state) {
-  document.querySelector(".fa-bars").addEventListener("click", () => {
-    document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-  });
-
+  document
+    .querySelector(".fa-bars")
+    .addEventListener("click", () =>
+      document.querySelector("nav > ul").classList.toggle("hidden--mobile")
+    );
   if (state.view === "Home") {
     //Do DOM Stuff here
     console.log("Hello");
@@ -143,6 +144,15 @@ router.hooks({
             store.Weather.weather.description = response.data.weather[0].main;
 
             console.log(response.data);
+            done();
+          })
+          .catch(err => console.log(err));
+        break;
+      case "Home":
+        axios
+          .get(process.env.STATUS_API)
+          .then(response => {
+            store.Home.status = response.data;
             done();
           })
           .catch(err => console.log(err));

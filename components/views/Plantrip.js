@@ -81,5 +81,5 @@ function checkDirection(maneuvers) {
     );
   }
 
-  return `Please Submit Addresses Above!`;
+  return;
 }
