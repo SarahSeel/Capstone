@@ -148,6 +148,15 @@ router.hooks({
           })
           .catch(err => console.log(err));
         break;
+      case "Home":
+        axios
+          .get(process.env.STATUS_API)
+          .then(response => {
+            store.Home.status = response.data;
+            done();
+          })
+          .catch(err => console.log(err));
+        break;
       default:
         done();
     }
