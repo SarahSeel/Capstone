@@ -16,17 +16,18 @@ function render(state = store.Home) {
   ${Main(state)}
   ${Footer()}
   `;
-  afterRender(state);
   router.updatePageLinks();
+  afterRender(state);
 }
 
 // Navbar Functionality
 
 function afterRender(state) {
-  document.querySelector(".fa-bars").addEventListener("click", () => {
-    document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-  });
-
+  document
+    .querySelector(".fa-bars")
+    .addEventListener("click", () =>
+      document.querySelector("nav > ul").classList.toggle("hidden--mobile")
+    );
   if (state.view === "Home") {
     //Do DOM Stuff here
     console.log("Hello");
