@@ -2,7 +2,7 @@ import html from "html-literal";
 
 export default state => html`
   <div>
-    <h2>Input the Starting Location and The Desired Destination!</h2>
+    <h2>Start Planning Your Trip!</h2>
     <form id="direction" method="POST" action="">
       <div id="fromLocation">
         <h3>Starting Location</h3>
@@ -65,7 +65,7 @@ export default state => html`
       <input type="submit" name="showDirections" value="Show Directions" />
       <input type="submit" name="showRoute" value="Show Route" />
     </form>
-    <h2>Here are your directions</h2>
+    <h2>Here Are Your Directions</h2>
     <div class="directions">
       <ul class="directions">
         ${checkDirection(state.directions.maneuvers)}

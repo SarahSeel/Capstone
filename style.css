@@ -24,15 +24,43 @@ body {
 }
 
 
-#directions {
-  padding: 10px 15px;
-  margin: 20px;
+#accounts {
+  margin: 15px 10px;
+  padding: 20px;
+  font-family: 'Quicksand';
+  text-align: center;
+
 }
 
-/* .direc {
-  align-items: center;
+#contact {
+  margin: 15px 10px;
   padding: 20px;
-} */
+  font-family: 'Quicksand';
+  text-align: center;
+}
+
+#direction {
+  padding: 20px 15px;
+  margin: 20px;
+  font-family: 'Quicksand';
+  align-items: center;
+}
+
+.directions {
+  font-family: 'Quicksand';
+  font-size: medium;
+}
+
+h2 {
+  font-family: 'Quicksand';
+  border: 6px #81b29a solid;
+}
+
+h3 {
+  font-family: 'Quicksand';
+  margin: 20px 10px;
+}
+
 
 footer {
   padding: 15px 10px 15px 10px;
@@ -79,6 +107,8 @@ nav>ul>li {
   display: flex;
   padding: 3px 8px;
   margin: 3px;
+  font-family: 'Quicksand';
+  font-size: large;
 }
 
 

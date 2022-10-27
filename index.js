@@ -2,10 +2,7 @@ import { Header, Nav, Main, Footer } from "./components";
 import * as store from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
-import dotenv from "dotenv";
 import axios from "axios";
-
-dotenv.config();
 
 const router = new Navigo("/");
 
@@ -103,7 +100,7 @@ function afterRender(state) {
     // 'map' refers to a <div> element with the ID map
     // eslint-disable-next-line no-undef
     const map = L.mapquest.map("map", {
-      center: [37.7749, -122.4194],
+      center: [38.627003, -90.199402],
       // eslint-disable-next-line no-undef
       layers: L.mapquest.tileLayer("map"),
       zoom: 12

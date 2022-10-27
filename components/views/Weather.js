@@ -10,7 +10,7 @@ export default state => html`
 
     <img
       class="img"
-      src="https://images.pexels.com/photos/2941985/pexels-photo-2941985.jpeg?auto=compress&cs=tinysrgb&w=1600"
+      src="https://images.pexels.com/photos/10169761/pexels-photo-10169761.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     />
   </body>
 `;
