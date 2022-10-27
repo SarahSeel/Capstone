@@ -3,10 +3,9 @@ import html from "html-literal";
 export default state => html`
   <body>
     <form action="https://formspree.io/f/xpzndvdk" method="POST">
-
+    <h2>Account Info</h2>
     <section id="accounts">
       <form id="account" method="POST" action="">
-        <h2><b>Account Info</b></h2>
         <div>
           <input
             type="text"
@@ -83,5 +82,9 @@ export default state => html`
         </div>
       </form>
     </section>
+    <img
+      class="img"
+      src="https://images.pexels.com/photos/210137/pexels-photo-210137.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    />
   </body>
 `;
