@@ -5,6 +5,7 @@ export default state => html`
     <form action="https://formspree.io/f/xpzndvdk" method="POST">
     <h2>Account Info</h2>
     <section id="accounts">
+    <h4>Create an Account</h4>
       <form id="account" method="POST" action="">
         <div>
           <input

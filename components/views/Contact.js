@@ -5,7 +5,7 @@ export default state => html`
     <form action="https://formspree.io/f/xpzndvdk" method="POST">
       <h2>CONTACT US!</h2>
       <section id="contact">
-        <h4>Please share with us what is troubling you.</h4>
+        <h4>Please share your valued input with us.</h4>
         <div>
           <input
             type="text"
