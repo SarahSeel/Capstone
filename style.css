@@ -81,8 +81,9 @@ footer {
 .Logo {
   display: inline-flex;
   font-family: 'Quicksand';
-  font-size: larger;
+  font-size: xx-large;
   color: #e07a5f;
+  padding: 10px 15px;
 }
 
 
