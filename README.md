@@ -1,6 +1,9 @@
 ## Description of Website in the works.
 
-- Moto Journey is a web application in which motorcycle enthusiast can map locations to designated places they have interest in. They can also make an account page, and contact us through forms.
+- Moto Journey is a web application where motorcycle enthusiasts will have a ton of resources at their fingertips. 
+- Using the navigation (map) feature will provide routing locations to desired destinations including repair shops, popular meet up locations, and custom mapped routes. 
+- Creating a sign up (member account) to save all the users information they’ve collected.
+-  Using the provided weather information to help riders make decisions to travel.
 
 ## Working on building for the future
 
