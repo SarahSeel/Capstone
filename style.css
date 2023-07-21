@@ -129,10 +129,7 @@ nav>ul>li {
   }
 
   .nav-links a:hover {
-    background-color: #e07a5f;
-    color: #3d405b;
-    align-items: center;
-    padding: 10px 10px;
+   color: #e07a5f;
   }
 
   nav>.fa-bars {
