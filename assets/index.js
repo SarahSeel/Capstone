@@ -1,0 +1,10 @@
+export { default as Desert } from "./Desert.jpeg";
+export { default as Desert2 } from "./Desert2.jpeg";
+export { default as Happy } from "./Happy.jpeg";
+export { default as Harley } from "./Harley.jpeg";
+export { default as Honda } from "./Honda.jpeg";
+export { default as Jefferson } from "./Jefferson.jpeg";
+export { default as Ocean } from "./Ocean.jpeg";
+export { default as Sarah } from "./Sarah.jpeg";
+export { default as Smokies } from "./Smokies.jpeg";
+export { default as Storm } from "./Storm.jpeg";
