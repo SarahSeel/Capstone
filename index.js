@@ -5,6 +5,7 @@ import { capitalize } from "lodash";
 import axios from "axios";
 import * as photos from "./assets";
 
+const photosArray = Object.values(photos);
 const router = new Navigo("/");
 
 function render(state = store.Home) {
@@ -33,120 +34,112 @@ function afterRender(state) {
 
   //Slide Show
   if (state.view === "Home") {
-    const p = 0;
-    const photos = [];
     const time = 4000;
 
-    photos[0] = photos.Desert;
-    photos[1] = photos.Desert2;
-    photos[2] = photos.Happy;
-    photos[3] = photos.Harley;
-    photos[4] = photos.Honda;
-    photos[5] = photos.Jefferson;
-    photos[6] = photos.Ocean;
-    photos[7] = photos.Sarah;
-    photos[8] = photos.Smokies;
-    photos[9] = photos.Storm;
+    document
+      .getElementById("photos-container")
+      .addEventListener("click", event => {
+        event.preventDefault();
+        store.Home.imageIndex =
+          store.Home.imageIndex === photosArray.length - 1
+            ? 0
+            : store.Home.imageIndex + 1;
 
-    function changePhoto() {
-      document.slide.src = photos[p];
+        // if (store.Home.imageIndex === photosArray.length - 1) {
+        //   store.Home.imageIndex = 0;
+        // } else {
+        //   store.Home.imageIndex++;
+        // }
+        console.log(store.Home.imageIndex);
+        console.log(photosArray.length);
+        store.Home.imageSource = photosArray[store.Home.imageIndex];
+        // const randomIndex = Math.random
+        // store.Home.imageSource = photosArray[randomIndex];
 
-      if(p < photos.length - 1){
-        p++
-      } else {
-        p = 0;
-      }
-
-      setTimeout("changePhoto()", time);
-    }
-    window.onload = changePhoto;
-
-    const clickingPhotos = document
-    .querySelector("photos")
-    .addEventListener("click", event => event.target.photos);
+        console.log(event.target);
+        router.navigate("/");
+      });
   }
 
+  //Map API
 
+  if (state.view === "Plantrip") {
+    const formEntry = document.querySelector("form");
+    const directionList = document.querySelector(".plantrip");
 
+    formEntry.addEventListener("submit", async event => {
+      event.preventDefault();
 
-//Map API
+      console.log("matsinet-event:", event);
 
-if (state.view === "Plantrip") {
-  const formEntry = document.querySelector("form");
-  const directionList = document.querySelector(".plantrip");
+      // directionList.classList.toggle("directions");
+      const inputList = event.target.elements;
+      console.log("Input Element List", inputList);
 
-  formEntry.addEventListener("submit", async event => {
-    event.preventDefault();
+      const from = {
+        street: inputList.fromStreet.value,
+        city: inputList.fromCity.value,
+        state: inputList.fromStreet.value
+      };
 
-    console.log("matsinet-event:", event);
+      store.Plantrip.from = from;
+      store.Route.from = from;
 
-    // directionList.classList.toggle("directions");
-    const inputList = event.target.elements;
-    console.log("Input Element List", inputList);
+      const to = {
+        street: inputList.toStreet.value,
+        city: inputList.toCity.value,
+        state: inputList.toStreet.value
+      };
 
-    const from = {
-      street: inputList.fromStreet.value,
-      city: inputList.fromCity.value,
-      state: inputList.fromStreet.value
-    };
+      store.Plantrip.to = to;
+      store.Route.to = to;
 
-    store.Plantrip.from = from;
-    store.Route.from = from;
+      if (event.submitter.name === "showDirections") {
+        /*
+            Please refer to the documentation:
+            https://developer.mapquest.com/documentation/directions-api/
+          */
+        axios
+          .get(
+            `http://www.mapquestapi.com/directions/v2/route?key=${process.env.MAP_QUEST_API}&from=${from.street},${from.city},${from.state}&to=${to.street},+${to.city},+${to.state}`
+          )
+          .then(response => {
+            store.Plantrip.directions = response.data;
+            store.Plantrip.directions.maneuvers =
+              response.data.route.legs[0].maneuvers;
+            router.navigate("/Plantrip");
+          })
+          .catch(error => {
+            console.log("Invalid Address", error);
+          });
+      }
 
-    const to = {
-      street: inputList.toStreet.value,
-      city: inputList.toCity.value,
-      state: inputList.toStreet.value
-    };
+      if (event.submitter.name === "showRoute") {
+        router.navigate("/Route");
+      }
+    });
+  }
+  if (state.view === "Map") {
+    /*
+        Please refer to the documentation:
+        https://developer.mapquest.com/documentation/mapquest-js/v1.3/
+      */
 
-    store.Plantrip.to = to;
-    store.Route.to = to;
-
-    if (event.submitter.name === "showDirections") {
-      /*
-          Please refer to the documentation:
-          https://developer.mapquest.com/documentation/directions-api/
-        */
-      axios
-        .get(
-          `http://www.mapquestapi.com/directions/v2/route?key=${process.env.MAP_QUEST_API}&from=${from.street},${from.city},${from.state}&to=${to.street},+${to.city},+${to.state}`
-        )
-        .then(response => {
-          store.Plantrip.directions = response.data;
-          store.Plantrip.directions.maneuvers =
-            response.data.route.legs[0].maneuvers;
-          router.navigate("/Plantrip");
-        })
-        .catch(error => {
-          console.log("Invalid Address", error);
-        });
-    }
-
-    if (event.submitter.name === "showRoute") {
-      router.navigate("/Route");
-    }
-  });
-}
-if (state.view === "Map") {
-  /*
-      Please refer to the documentation:
-      https://developer.mapquest.com/documentation/mapquest-js/v1.3/
-    */
-
-  // eslint-disable-next-line no-undef
-  L.mapquest.key = process.env.MAP_QUEST_API;
-
-  // 'map' refers to a <div> element with the ID map
-  // eslint-disable-next-line no-undef
-  const map = L.mapquest.map("map", {
-    center: [38.627003, -90.199402],
     // eslint-disable-next-line no-undef
-    layers: L.mapquest.tileLayer("map"),
-    zoom: 12
-  });
+    L.mapquest.key = process.env.MAP_QUEST_API;
 
-  // eslint-disable-next-line no-undef
-  map.addControl(L.mapquest.control());
+    // 'map' refers to a <div> element with the ID map
+    // eslint-disable-next-line no-undef
+    const map = L.mapquest.map("map", {
+      center: [38.627003, -90.199402],
+      // eslint-disable-next-line no-undef
+      layers: L.mapquest.tileLayer("map"),
+      zoom: 12
+    });
+
+    // eslint-disable-next-line no-undef
+    map.addControl(L.mapquest.control());
+  }
 }
 
 router.hooks({
@@ -184,6 +177,7 @@ router.hooks({
           .catch(err => console.log(err));
         break;
       case "Home":
+        store.Home.imageSource = photosArray[store.Home.imageIndex];
         axios
           .get(process.env.STATUS_API)
           .then(response => {
