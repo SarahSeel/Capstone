@@ -53,9 +53,9 @@ function afterRender(state) {
         console.log(store.Home.imageIndex);
         console.log(photosArray.length);
         store.Home.imageSource = photosArray[store.Home.imageIndex];
-        // const randomIndex = Math.random
-        // store.Home.imageSource = photosArray[randomIndex];
 
+        const randomIndex = Math.floor(Math.random() * 10);
+        store.Home.imageSource = photosArray[randomIndex];
         console.log(event.target);
         router.navigate("/");
       });
