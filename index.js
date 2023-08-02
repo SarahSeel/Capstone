@@ -53,9 +53,9 @@ function afterRender(state) {
         console.log(store.Home.imageIndex);
         console.log(photosArray.length);
         store.Home.imageSource = photosArray[store.Home.imageIndex];
-        // const randomIndex = Math.random
-        // store.Home.imageSource = photosArray[randomIndex];
 
+        const randomIndex = Math.floor(Math.random() * 10);
+        store.Home.imageSource = photosArray[randomIndex];
         console.log(event.target);
         router.navigate("/");
       });
@@ -128,17 +128,62 @@ function afterRender(state) {
     // eslint-disable-next-line no-undef
     L.mapquest.key = process.env.MAP_QUEST_API;
 
+    const baseMap = L.mapquest.tileLayer("map");
+    const tempMap = L.tileLayer(
+      `https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`,
+      { layer: "temp_new" }
+    );
+
+    const rainMap = L.tileLayer(
+      `https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`,
+      { layer: "precipitation_new" }
+    );
+
+    const windMap = L.tileLayer(
+      `https://tile.openweathermap.org/map/{layer}/{z}/{x}/{y}.png?appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`,
+      { layer: "wind_new" }
+    );
+
     // 'map' refers to a <div> element with the ID map
     // eslint-disable-next-line no-undef
     const map = L.mapquest.map("map", {
       center: [38.627003, -90.199402],
       // eslint-disable-next-line no-undef
-      layers: L.mapquest.tileLayer("map"),
-      zoom: 12
+      layers: baseMap,
+      zoom: 8
     });
+
+    //First layer
+    L.control
+      .layers(
+        {
+          Map: baseMap,
+          Hybrid: L.mapquest.tileLayer("hybrid"),
+          Satellite: L.mapquest.tileLayer("satellite")
+        },
+
+        //Second layer
+        {
+          Temperature: tempMap,
+          Precipitation: rainMap,
+          Wind: windMap
+        }
+      )
+      .addTo(map);
 
     // eslint-disable-next-line no-undef
     map.addControl(L.mapquest.control());
+    L.mapquest
+      .directionsControl({
+        routeSummary: {
+          enabled: false
+        },
+        narrativeControl: {
+          enabled: true,
+          compactResults: false
+        }
+      })
+      .addTo(map);
   }
 }
 
