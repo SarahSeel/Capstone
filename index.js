@@ -158,8 +158,7 @@ function afterRender(state) {
       .layers(
         {
           Map: baseMap,
-          Hybrid: L.mapquest.tileLayer("hybrid"),
-          Satellite: L.mapquest.tileLayer("satellite")
+          Hybrid: L.mapquest.tileLayer("hybrid")
         },
 
         //Second layer
@@ -183,7 +182,11 @@ function afterRender(state) {
           compactResults: false
         }
       })
+
       .addTo(map);
+
+    map.addLayer(L.mapquest.marketsLayer()); // Info of Incidents on Map
+    map.addLayer(L.mapquest.trafficLayer()); // Traffic indicator on Map
   }
 }
 

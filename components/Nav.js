@@ -2,7 +2,9 @@ import html from "html-literal";
 
 export default links => html`
       <nav>
-      <div class="Logo">Moto Journey</div>
+      <div class="Logo">Moto Journey
+      </div>
+
     <i class="fas fa-bars"></i>
  <ul class="hidden--mobile nav-links">
         ${links
