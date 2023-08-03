@@ -5,6 +5,7 @@ import { capitalize } from "lodash";
 import axios from "axios";
 import * as photos from "./assets";
 
+
 const photosArray = Object.values(photos);
 const router = new Navigo("/");
 
@@ -32,7 +33,28 @@ function afterRender(state) {
     console.log("Hello");
   }
 
+  //Weather Info
+  // let weatherPicture;
+  // if (store.Weather.weather.description === "Sunny") {
+  //   weatherPicture = `${weatherPhotos.Sunny}`;
+  // }
+  // if (store.Weather.weather.description === "Rainy") {
+  //   weatherPicture = `${weatherPhotos.Rain}`;
+  // }
+  // if (store.Weather.weather.description === "Snowing") {
+  //   weatherPicture = `${weatherPhotos.Snow}`;
+  // }
+  // if (store.Weather.weather.description === "Cloudy") {
+  //   weatherPicture = `${weatherPhotos.Cloudy}`;
+  // }
+  // if (store.Weather.weather.description === "Partly cloudy") {
+  //   weatherPicture = `${weatherPhotos.Partly}`;
+  // } else {
+  //   console.log("Something went wrong with today's weather forecast");
+  // }
+
   //Slide Show
+
   if (state.view === "Home") {
     const time = 4000;
 
@@ -50,6 +72,7 @@ function afterRender(state) {
         // } else {
         //   store.Home.imageIndex++;
         // }
+
         console.log(store.Home.imageIndex);
         console.log(photosArray.length);
         store.Home.imageSource = photosArray[store.Home.imageIndex];
@@ -58,6 +81,23 @@ function afterRender(state) {
         store.Home.imageSource = photosArray[randomIndex];
         console.log(event.target);
         router.navigate("/");
+
+        //Slide show Actions
+        // let slide = 0;
+        // change();
+        // function change() {
+        //   const slideShow = document.getElementById("photos-container");
+        //   for (let i = 0; i < slideShow.length; i++) {
+        //     slideShow[i].style.display = "none";
+        //   }
+        //   slide++;
+
+        //   if (slide > slideShow.length) {
+        //     slide = 1;
+        //   }
+        //   slideShow[slide - 1].style.display = "block";
+        //   setTimeout(change, time);
+        // }
       });
   }
 
@@ -158,8 +198,7 @@ function afterRender(state) {
       .layers(
         {
           Map: baseMap,
-          Hybrid: L.mapquest.tileLayer("hybrid"),
-          Satellite: L.mapquest.tileLayer("satellite")
+          Hybrid: L.mapquest.tileLayer("hybrid")
         },
 
         //Second layer
@@ -183,7 +222,11 @@ function afterRender(state) {
           compactResults: false
         }
       })
+
       .addTo(map);
+
+    map.addLayer(L.mapquest.marketsLayer()); // Info of Incidents on Map
+    map.addLayer(L.mapquest.trafficLayer()); // Traffic indicator on Map
   }
 }
 
@@ -215,12 +258,16 @@ router.hooks({
               response.data.main.feels_like
             );
             store.Weather.weather.description = response.data.weather[0].main;
+            store.Weather.weather.icon = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
 
             console.log(response.data);
             done();
           })
           .catch(err => console.log(err));
         break;
+
+      //Home Page
+
       case "Home":
         store.Home.imageSource = photosArray[store.Home.imageIndex];
         axios

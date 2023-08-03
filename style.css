@@ -15,12 +15,21 @@ body {
   text-align: center;
 }
 
+#photos-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 100px 100px;
+  overflow: scroll;
+
+}
+
 .routeMap {
   max-width: 1000px;
 }
 
 #map {
-  height: 600px;
+  height: 700px;
 }
 
 
@@ -53,7 +62,7 @@ body {
 
 h2 {
   font-family: 'Quicksand';
-  border: 6px #81b29a solid;
+  border: 6px #81b29a groove;
 }
 
 h3 {
@@ -78,15 +87,18 @@ footer {
   margin: 20px;
 }
 
+#Logo {
+  width: 10px;
+  height: 100px;
+display: flex;
+}
+
 .Logo {
-  display: inline-flex;
   font-family: 'Quicksand';
   font-size: xx-large;
   color: #e07a5f;
-  padding: 10px 15px;
+
 }
-
-
 
 nav>i {
   padding: 1rem;
@@ -100,7 +112,7 @@ nav>ul {
   flex-direction: column;
   padding: 0 0;
   background-color: #f2cc8f;
-  border: #3d405b 1px solid;
+  border: #3d405b 12px ridge;
 }
 
 nav>ul>li {
