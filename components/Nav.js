@@ -4,9 +4,9 @@ import Logo from "../assets/Logo/MotoJourney.png";
 export default links => html`
       <nav>
       <div id="Logo"> <img src="${Logo}">
-<p class="Logo">Moto Journey</p>
-      </div>
 
+  <div class="Logo">Moto Journey</div>
+  </div>
 
     <i class="fas fa-bars"></i>
  <ul class="hidden--mobile nav-links">
