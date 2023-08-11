@@ -1,5 +1,9 @@
-export { default as Cloudy } from "./Cloudy.jpg";
-export { default as Rain } from "./Rainny-Motorcycle.jpg";
-export { default as Snow } from "./Snowing-Motorcycle.jpg";
-export { default as Sunny } from "./Sunny-Motorcycle.jpg";
-export { default as Partly } from "./Partly.jpg";
+export { default as BrokenClouds } from "./BrokenClouds.jpg";
+export { default as ClearSky } from "./ClearSky.jpg";
+export { default as FewClouds } from "./FewClouds.jpg";
+export { default as Mist } from "./Mist.jpg";
+export { default as Rain } from "./Rain.jpg";
+export { default as ScatteredClouds } from "./ScatteredClouds.jpg";
+export { default as ShowerRain } from "./ShowerRain.jpg";
+export { default as Snow } from "./Snow.jpg";
+export { default as Thunderstorm } from "./Thunderstorm.jpg";

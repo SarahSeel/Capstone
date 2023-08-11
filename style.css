@@ -19,8 +19,8 @@ body {
   display: flex;
   position: relative;
   flex-direction: column;
+  margin-left: 100px;
   padding: 100px 100px;
-  overflow: scroll;
 
 }
 
@@ -68,6 +68,7 @@ h2 {
 h3 {
   font-family: 'Quicksand';
   margin: 20px 10px;
+  font-size: x-large;
 }
 
 
@@ -87,13 +88,21 @@ footer {
   margin: 20px;
 }
 
+#weatherIcon {
+  width: 10%;
+  background-color: #81b29a;
+  border-radius: 100px;
+  margin-left: 80%;
+}
+
 #Logo {
   width: 10px;
   height: 100px;
-display: flex;
+  display: flex;
 }
 
 .Logo {
+  display: flex;
   font-family: 'Quicksand';
   font-size: xx-large;
   color: #e07a5f;

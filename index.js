@@ -4,7 +4,7 @@ import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
 import * as photos from "./assets";
-
+import * as weatherPhotos from "./assets/Weather";
 
 const photosArray = Object.values(photos);
 const router = new Navigo("/");
@@ -34,22 +34,27 @@ function afterRender(state) {
   }
 
   //Weather Info
-  // let weatherPicture;
-  // if (store.Weather.weather.description === "Sunny") {
-  //   weatherPicture = `${weatherPhotos.Sunny}`;
-  // }
-  // if (store.Weather.weather.description === "Rainy") {
+  // let weatherPicture = {};
+  // if (store.Weather.weather.description === "clear sky") {
+  //   weatherPicture = `${weatherPhotos.ClearSky}`;
+  // } else if (store.Weather.weather.description === "few clouds") {
   //   weatherPicture = `${weatherPhotos.Rain}`;
-  // }
-  // if (store.Weather.weather.description === "Snowing") {
+  // } else if (store.Weather.weather.description === "scattered clouds") {
+  //   weatherPicture = `${weatherPhotos.ScatteredClouds}`;
+  // } else if (store.Weather.weather.description === "broken clouds") {
+  //   weatherPicture = `${weatherPhotos.BrokenClouds}`;
+  // } else if (store.Weather.weather.description === "shower rain") {
+  //   weatherPicture = `${weatherPhotos.ShowerRain}`;
+  // } else if (store.Weather.weather.description === "rain") {
+  //   weatherPicture = `${weatherPhotos.Rain}`;
+  // } else if (store.Weather.weather.description === "thunderstorm") {
+  //   weatherPicture = `${weatherPhotos.Thunderstorm}`;
+  // } else if (store.Weather.weather.description === "snow") {
   //   weatherPicture = `${weatherPhotos.Snow}`;
-  // }
-  // if (store.Weather.weather.description === "Cloudy") {
-  //   weatherPicture = `${weatherPhotos.Cloudy}`;
-  // }
-  // if (store.Weather.weather.description === "Partly cloudy") {
-  //   weatherPicture = `${weatherPhotos.Partly}`;
+  // } else if (store.Weather.weather.description === "mist") {
+  //   weatherPicture = `${weatherPhotos.Mist}`;
   // } else {
+  //   store.Weather.weather.description !== "none";
   //   console.log("Something went wrong with today's weather forecast");
   // }
 
@@ -259,6 +264,7 @@ router.hooks({
             );
             store.Weather.weather.description = response.data.weather[0].main;
             store.Weather.weather.icon = `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`;
+            store.Weather.weather.weatherPicture = {};
 
             console.log(response.data);
             done();
